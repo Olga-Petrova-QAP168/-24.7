@@ -59,7 +59,7 @@ def test_successful_delete_self_pet():
 
     # Проверяем - если список своих питомцев пустой, то добавляем нового и опять запрашиваем список своих питомцев
     if len(my_pets['pets']) == 0:
-        pf.add_new_pet(auth_key, "Суперкот", "кот", "3", "images/cat1.jpg")
+        pf.add_new_pet(auth_key, "Кузя", "кот", "5", "images/326548.jpg")
         _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
 
     # Берём id первого питомца из списка и отправляем запрос на удаление
@@ -74,7 +74,7 @@ def test_successful_delete_self_pet():
     assert pet_id not in my_pets.values()
 
 # редактирование питомца
-def test_successful_update_self_pet_info(name='Мурзик', animal_type='Котэ', age=5):
+def test_successful_update_self_pet_info(name='Мурзик', animal_type='Котэ', age='5'):
     """Проверяем возможность обновления информации о питомце"""
 
     # Получаем ключ auth_key и список своих питомцев
@@ -228,7 +228,7 @@ def test_add_pets_set_photo_invalid(pet_photo='images/231531.bmp'):
 
 # 8.1
 # Редактирование питомца некорректной породой. Результат теста должен быть FAILED
-def test_successful_update_self_pet_invalid_info(name='Бусик', animal_type='12%№', age=5):
+def test_update_pet_info_invalid_type(name='Бусик', animal_type='12%№', age='5'):
     """Проверяем возможность обновления информации о питомце"""
 
     # Получаем ключ auth_key и список своих питомцев
@@ -248,7 +248,7 @@ def test_successful_update_self_pet_invalid_info(name='Бусик', animal_type=
 
 # 9.1
 # Редактирование питомца некорректным именем Результат теста должен быть FAILED
-def test_successful_update_self_pet_invalid_info(name='165+-5543@', animal_type='Котэ', age=5):
+def test_update_self_pet_info_invalid_name(name='165+-5543@', animal_type='Котэ', age='5'):
     """Проверяем возможность обновления информации о питомце"""
 
     # Получаем ключ auth_key и список своих питомцев
@@ -268,7 +268,7 @@ def test_successful_update_self_pet_invalid_info(name='165+-5543@', animal_type=
 
 # 10.1
 # Редактирование питомца некорректным возрастом Результат теста должен быть FAILED
-def test_successful_update_self_pet_invalid_info(name='Багира', animal_type='Кот', age=-5):
+def test_update_pet_info_invalid_age(name='Багира', animal_type='Кот', age='-5'):
     """Проверяем возможность обновления информации о питомце"""
 
     # Получаем ключ auth_key и список своих питомцев
